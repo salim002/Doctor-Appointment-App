@@ -1,0 +1,25 @@
+import express from "express";
+import colors from "colors";
+import morgan from "morgan";
+import dotenv from "dotenv";
+import connectToMongo from "./config/db.js";
+import routes from "./routes/userRoutes.js";
+
+dotenv.config();
+
+// Rest Object
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+connectToMongo();
+
+// Middlewares
+app.use(express.json());
+app.use(morgan('dev'));
+
+// Routes
+app.use("/api/v1/user", routes);
+
+app.listen(PORT, ()=>{
+    console.log(`Server is running on http://localhost:${PORT}`.bgCyan.white);
+})

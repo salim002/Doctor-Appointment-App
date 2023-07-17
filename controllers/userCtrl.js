@@ -45,7 +45,26 @@ export const loginController = async (req, res) => {
         }
     } catch(error){
         console.log(error);
-        return res.status(500).json({message: `Error in Longin CTRL ${error}`})
+        return res.status(500).json({message: `Error in Login CTRL ${error.message}`, success: false})
     }
 };
 
+export const authController = async (req, res) =>{
+    try{
+        const user = await userModel.findOne({_id: req.body.userId});
+        if(user){
+            return res.status(200).json({success: true,
+                data : {
+                    name: user.name,
+                    email: user.email
+                }
+            });
+        }
+        else{
+            return res.status(200).json({message: "User not found", success: false});
+        }
+    } catch(error){
+        console.log(errro);
+        return res.status(500).json({message: `Error in Authorization CTRL ${error.message}`, success: false, error});
+    }
+}

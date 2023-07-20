@@ -11,7 +11,7 @@ const Layout = ({children}) => {
     const {user} = useSelector(state => state.user);
     const location = useLocation();
 
-    const sideBarMenu = user?.isAdmin ? adminMenu : userMenu;
+    const sidebarMenu = user?.isAdmin ? adminMenu : userMenu;
 
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const Layout = ({children}) => {
                         <hr />
                     </div>
                     <div className="menu">
-                        {sideBarMenu.map(menu => {
+                        {sidebarMenu.map(menu => {
                             const isActive = location.pathname === menu.path;
                             return (
                                 <>

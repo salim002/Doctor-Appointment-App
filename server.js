@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import connectToMongo from "./config/db.js";
 import routes from "./routes/userRoutes.js";
 
+// import cors from "cors";
+
 dotenv.config();
 
 // Rest Object
@@ -15,6 +17,7 @@ connectToMongo();
 
 // Middlewares
 app.use(express.json());
+// app.use(cors())
 app.use(morgan('dev'));
 
 // Routes

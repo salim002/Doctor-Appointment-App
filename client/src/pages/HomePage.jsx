@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
+import Layout from "../components/Layout";
+
 const HomePage = () => {
 
   const getUserData = async ()=>{
@@ -12,6 +14,7 @@ const HomePage = () => {
           Authorization : "Bearer " + localStorage.getItem("token")
         }
       })
+      console.log(res);
     } catch(error){
       console.log(error);
     }
@@ -22,9 +25,9 @@ const HomePage = () => {
   }, [])
 
   return (
-    <div>
+    <Layout>
       <h1>Home Page</h1>
-    </div>
+    </Layout>
   )
 }
 

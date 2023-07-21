@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Spinner from "./components/Spinner";
+import ApplyDoctor from "./pages/ApplyDoctor";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -19,6 +20,11 @@ function App() {
           <Route path='/' element={
             <ProtectedRoute>
               <HomePage/>
+            </ProtectedRoute>
+          } />
+          <Route path='/apply-doctor' element={
+            <ProtectedRoute>
+              <ApplyDoctor/>
             </ProtectedRoute>
           } />
           <Route path='/login' element={

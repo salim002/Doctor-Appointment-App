@@ -90,4 +90,20 @@ export const applyDoctorController = async (req, res) => {
         return res.status(500).json({success: false, error, message: "Error While Applying For Doctor"});
     }
 };
+
+export const getAllNotificationController = async (req, res) => {
+    try{
+        const user = await userModel.findOne({_id: req.body.userId});
+        const seenNotification = user.seenNotification;
+        const notification = user.notification;
+        seenNotification.push(...notification);
+        user.notification = [];
+        user.seenNotification = notification;
+        const updatedUser = await user.save();
+        return res.status(200).json({success: true, message: "All notification marked as read", data: updatedUser});
+    } catch(error){
+        console.log(error);
+        return res.status(500).json({message: `Error in getting notification`, success: false, error})
+    }
+}
   

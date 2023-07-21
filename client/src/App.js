@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Spinner from "./components/Spinner";
 import ApplyDoctor from "./pages/ApplyDoctor";
+import NotificationPage from "./pages/NotificationPage";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -25,6 +26,11 @@ function App() {
           <Route path='/apply-doctor' element={
             <ProtectedRoute>
               <ApplyDoctor/>
+            </ProtectedRoute>
+          } />
+          <Route path='/notification' element={
+            <ProtectedRoute>
+              <NotificationPage/>
             </ProtectedRoute>
           } />
           <Route path='/login' element={

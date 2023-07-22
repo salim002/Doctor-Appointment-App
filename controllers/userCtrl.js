@@ -106,4 +106,26 @@ export const getAllNotificationController = async (req, res) => {
         return res.status(500).json({message: `Error in getting notification`, success: false, error})
     }
 }
+
+export const deleteAllNotificationController = async (req, res) => {
+    try {
+      const user = await userModel.findOne({ _id: req.body.userId });
+      user.notifcation = [];
+      user.seennotification = [];
+      const updatedUser = await user.save();
+      updatedUser.password = undefined;
+      return res.status(200).json({
+        success: true,
+        message: "Notifications Deleted successfully",
+        data: updatedUser,
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        success: false,
+        message: "unable to delete all notifications",
+        error,
+      });
+    }
+};
   

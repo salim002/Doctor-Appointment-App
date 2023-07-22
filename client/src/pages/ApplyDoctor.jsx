@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import axios from "axios";
+// import moment from "moment";
 
 const ApplyDoctor = () => {
   const { user } = useSelector((state) => state.user);
@@ -15,9 +16,17 @@ const ApplyDoctor = () => {
   const handleFinish = async (values) => {
     try {
       dispatch(showLoading());
+  
+      const startTime = values.timings[0].format("HH:mm");
+      const endTime = values.timings[1].format("HH:mm");
+  
       const res = await axios.post(
         "/api/v1/user/apply-doctor",
-        { ...values, userId: user._id },
+        {
+          ...values,
+          userId: user._id,
+          timings: [startTime, endTime],
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -34,11 +43,10 @@ const ApplyDoctor = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Somthing Went Wrrong ");
+      message.error("Something Went Wrong ");
     }
-    console.log(values);
   };
-
+  
   return (
     <Layout>
       <h1 className="text-center">Apply Doctor</h1>

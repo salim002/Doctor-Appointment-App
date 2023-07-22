@@ -49,11 +49,11 @@ export const changeAccountStatusController = async (req, res) => {
             message: `Your Doctor Account Request Has ${status}`,
             onClickPath: "/notification"
         })
-        user.isDoctor === "approved" ? true : false;
+        user.isDoctor = status === "approved" ? true : false;
         await user.save();
         return res.status(201).json({
             success: true,
-            message: "Account Status",
+            message: "Account Status Updated",
             data: doctor
         })
     } catch(error){

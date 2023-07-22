@@ -19,6 +19,6 @@ router.post("/apply-doctor", authMiddleware, applyDoctorController);
 router.post("/get-all-notification", authMiddleware, getAllNotificationController);
 
 // Notification Doctor
-router.post("/get-all-notification", authMiddleware, deleteAllNotificationController);
+router.post("/delete-all-notification", authMiddleware, deleteAllNotificationController);
 
 export default router;

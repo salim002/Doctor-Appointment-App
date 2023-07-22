@@ -42,28 +42,28 @@ const NotificationPage = () => {
     };
 
     const handleDeleteAllRead = async () => {
-        try {
+      try {
         dispatch(showLoading());
         const res = await axios.post(
-            "/api/v1/user/delete-all-notification",
-            { userId: user._id },
-            {
+          "/api/v1/user/delete-all-notification",
+          { userId: user._id },
+          {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            }
+          }
         );
         dispatch(hideLoading());
         if (res.data.success) {
-            message.success(res.data.message);
+          message.success(res.data.message);
         } else {
-            message.error(res.data.message);
+          message.error(res.data.message);
         }
-        } catch (error) {
+      } catch (error) {
         dispatch(hideLoading());
         console.log(error);
-        message.error("Somthing Went Wrong In Ntifications");
-        }
+        message.error("Somthing Went Wrong In Notifications");
+      }
     };
 
   return (

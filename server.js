@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectToMongo from "./config/db.js";
 import routes from "./routes/userRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import doctorRoutes from "./routes/doctorRoutes.js";
 
 // import cors from "cors";
 
@@ -24,6 +25,7 @@ app.use(morgan('dev'));
 // Routes
 app.use("/api/v1/user", routes);
 app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/doctor", doctorRoutes);
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`.bgCyan.white);

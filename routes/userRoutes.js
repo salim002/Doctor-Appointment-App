@@ -1,5 +1,6 @@
 import express from "express";
-import { loginController, registerController, authController, applyDoctorController, getAllNotificationController, deleteAllNotificationController} from "../controllers/userCtrl.js";
+import { loginController, registerController, authController, applyDoctorController, getAllNotificationController,
+     deleteAllNotificationController, getAllDoctorsController} from "../controllers/userCtrl.js";
 
 import authMiddleware from "../middlewares/authMiddleware.js";
 
@@ -20,5 +21,8 @@ router.post("/get-all-notification", authMiddleware, getAllNotificationControlle
 
 // Notification Doctor
 router.post("/delete-all-notification", authMiddleware, deleteAllNotificationController);
+
+// Get All DOC
+router.get("/getAllDoctors", authMiddleware, getAllDoctorsController)
 
 export default router;

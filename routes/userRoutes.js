@@ -1,6 +1,7 @@
 import express from "express";
 import { loginController, registerController, authController, applyDoctorController, getAllNotificationController,
-     deleteAllNotificationController, getAllDoctorsController} from "../controllers/userCtrl.js";
+     deleteAllNotificationController, getAllDoctorsController, bookAppointmentController,
+     bookingAvailabilityController} from "../controllers/userCtrl.js";
 
 import authMiddleware from "../middlewares/authMiddleware.js";
 
@@ -24,5 +25,11 @@ router.post("/delete-all-notification", authMiddleware, deleteAllNotificationCon
 
 // Get All DOC
 router.get("/getAllDoctors", authMiddleware, getAllDoctorsController)
+
+// Book Appointment
+router.post("/book-appointment", authMiddleware, bookAppointmentController);
+
+// Booking Availability
+router.post("/booking-availability", authMiddleware, bookingAvailabilityController)
 
 export default router;
